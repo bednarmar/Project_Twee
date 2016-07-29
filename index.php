@@ -1,9 +1,9 @@
 <?php
+include_once './top.inc.php';
 
-$conn = new mysqli('localhost', 'root', 'coderslab', 'Tweet_pro');
+if (!$user->isLogged()){
+    header('Location: login.php');
+//przenosi jak nie jest zalogwany do loginu.tłumaczeniie hedera w loginie
+}
 
-        if ($conn->connect_error){
-            die("Błąd bazy, przepraszamy. ");
-        }
-
-$conn->close();
+include_once './foot.inc.php';

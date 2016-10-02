@@ -1,36 +1,27 @@
 <?php
 session_start();
 include_once 'top.inc.php';
-include_once "classes/user_class.php";
 
 if( isset($_SESSION['user'])!="" ){
     header("Location: index.php");
-    
 }
 
-/*ewentualne rozwiazanie zalogowanego
-$newUser = new User();
-if($newUser->isLogged()!=""){
- header("Location: index.php");
-}
-*/
-    if(isset($_POST['loginBtn'])) {
+if(isset($_POST['loginBtn'])) {
 		
     $email = $conn->escape_string($_POST['email']);
     $pwd = $conn->escape_string($_POST['pwd']);
    
     $newUser = new User($email, $pwd);
     $newUser->login();
-    }
+}
 ?>
-	
 
 <!DOCTYPE html>
 <html>
-<head charset=utf-8" />
-<title>Login page: Tweet_pro</title>
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<head>
+    <meta charset="UTF-8">
+    <title>Login page: Tweet_pro</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 
@@ -66,7 +57,9 @@ if($newUser->isLogged()!=""){
 </body>
 </html>            
             
-            
+<?php
+    include_once 'foot.inc.php';
+?>
             
             	
            

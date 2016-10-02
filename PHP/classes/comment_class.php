@@ -52,26 +52,17 @@ class Comment {
         $this->setCommentDate($commentDate);
     }
     
-    public function loadFromDB()
+    public function createComment ($userId,$tweetId,$comment)
     {
-        $sql = "SELECT * FROM comment;";
-            $result = $conn->query($sql);
-            echo 'Znaleziono wyników: '.$result->num_rows.'<br>';
+        $conn = new mysqli('localhost', 'root', 'coderslab', 'Tweet_pro');
+        $stmt = $conn->prepare("INSERT INTO comment (user_id, tweet, date) VALUES($userId, $tweetId, $comment, NOW())");
+        $result = $conn->query($stmt);
     }
-    
-    public function create ()
-    {
-        
-    }   
-    
-    public function show()
+
+    public function showComment()
     {
         
     }
-    
-    public function update()
-    {
         
-    }        
 }
 

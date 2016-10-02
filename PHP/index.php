@@ -6,8 +6,6 @@ if( !isset($_SESSION['user'])){
     exit;
 }
 include_once 'top.inc.php';
-include_once "classes/user_class.php";
-include_once "classes/tweet_class.php";
 
 if(isset($_POST['addTweet'])) {
 		
@@ -15,8 +13,7 @@ if(isset($_POST['addTweet'])) {
     $user_id = $_SESSION['user'];
     
     $newTweet = new Tweet($user_id, $tweet);
-    $newTweet->create();
-    
+    $newTweet->createTweet();
 }
 
 if(isset($_POST['signOutBtn'])) {
@@ -32,6 +29,7 @@ if(isset($_POST['signOutBtn'])) {
     <head>
         <meta charset="UTF-8">
         <title>Main page: Tweet_pro</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
     </head>  
     <body>
         
@@ -67,7 +65,7 @@ if(isset($_POST['signOutBtn'])) {
         <?php
             $userId = $_SESSION['user'];
             $newTweet = new Tweet($userId);
-            $posts = $newTweet->show($_SESSION['user']);
+            $posts = $newTweet->showTweet($_SESSION['user']);
 
             if (count($posts)){
         ?>
@@ -86,4 +84,7 @@ if(isset($_POST['signOutBtn'])) {
 
     </body>
 </html>
-        
+
+<?php
+    include_once 'foot.inc.php';
+?>

@@ -6,7 +6,6 @@ if( isset($_SESSION['user'])!="" ){
     exit;
 }
 include_once 'top.inc.php';
-include_once "classes/user_class.php";
 
 if(isset($_POST['registerBtn'])) {
 		
@@ -16,7 +15,6 @@ if(isset($_POST['registerBtn'])) {
 	
     $newUser = new User($email, $pwd);
     $newUser->register($pwd2);
-    	
 }
 ?>
 
@@ -25,6 +23,7 @@ if(isset($_POST['registerBtn'])) {
     <head>
         <title>Register new User</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
     </head>
     <body>
         <div id="register">
@@ -68,5 +67,7 @@ if(isset($_POST['registerBtn'])) {
         
     </body>
 </html>
- 
- 
+
+<?php
+    include_once 'foot.inc.php';
+?> 
